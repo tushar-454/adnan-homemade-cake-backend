@@ -1,9 +1,9 @@
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
-import globalError from '../middlewares/globalError';
-import logger from '../middlewares/logger';
+import { logger } from '../middlewares/logger';
 import routes from '../routes';
+import { globalError } from './global_error';
 
 const applyMiddleware = (app: Application): void => {
   app.use(
@@ -21,4 +21,4 @@ const applyMiddleware = (app: Application): void => {
   app.use(globalError);
 };
 
-export default applyMiddleware;
+export { applyMiddleware };

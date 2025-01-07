@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import applyMiddleware from './middlewares';
+import { applyMiddleware } from './middlewares';
 
 // express app
 const app = express();

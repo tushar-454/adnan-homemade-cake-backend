@@ -6,4 +6,4 @@ const globalError = (err: any, _req: Request, res: Response, _next: NextFunction
   res.status(status).json({ status, error });
 };
 
-export default globalError;
+export { globalError };
