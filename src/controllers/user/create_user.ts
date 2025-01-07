@@ -1,9 +1,18 @@
 import { NextFunction, Request, Response } from 'express';
 import { createUserService } from '../../services/user/create_user';
+import { findUserByProperty } from '../../services/user/find_user_by_property';
 
 const createUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { name, email, photo } = req.body;
+    const existing_user = await findUserByProperty('email', email);
+    if (existing_user) {
+      res.status(409).json({
+        success: false,
+        message: 'User already exists',
+      });
+      return;
+    }
     const new_user = await createUserService({ name, email, photo });
     const user = new_user?.toObject();
     delete user.password;
