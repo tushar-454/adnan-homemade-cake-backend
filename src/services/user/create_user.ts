@@ -1,5 +1,5 @@
 import { IUser, User } from '../../models/User';
-import { CreateUserInput } from '../../validation/user/create_user_validation';
+import { CreateUserInput } from '../../validation/auth/create_user_validation';
 
 const createUserService = async (user: CreateUserInput): Promise<IUser | undefined> => {
   const { name, email, photo } = user;
