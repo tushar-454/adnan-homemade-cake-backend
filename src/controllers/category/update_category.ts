@@ -16,7 +16,10 @@ const updateCategory = async (req: Request, res: Response, next: NextFunction): 
 		category.name = name ?? category.name;
 		category.photo = photo ?? category.photo;
 		const result = await category.save();
-		console.log(result);
+		res.status(200).json({
+            status: true,
+            message: 'Resouce updated'
+        });
 	} catch(error) { 
 		next(error);
 	}
