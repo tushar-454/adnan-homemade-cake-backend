@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { createCategory } from '../controllers/category/create_category';
-import { getCategory } from '../controllers/category/get_category';
-import { createCategoryValidation } from '../validation/category/create_category_validation';
-import { updateCategory } from '../controllers/category/update_category';
 import { deleteCategory } from '../controllers/category/delete_category';
+import { getCategory } from '../controllers/category/get_category';
+import { updateCategory } from '../controllers/category/update_category';
+import { createCategoryValidation } from '../validation/category/create_category_validation';
 
 const router = Router();
 
