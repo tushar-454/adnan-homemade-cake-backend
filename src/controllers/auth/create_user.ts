@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { createUserService } from '../../services/user/create_user';
 import { findUserByProperty } from '../../services/user/find_user_by_property';
+import { CreateUserInput } from '../../validation/auth/create_user';
 
 const createUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { name, email, photo } = req.body;
+    const { name, email, photo } = req.body as CreateUserInput;
     const existing_user = await findUserByProperty('email', email);
     if (existing_user) {
       res.status(409).json({
