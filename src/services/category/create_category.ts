@@ -1,5 +1,5 @@
 import { Category, ICategory } from '../../models/Category';
-import { CreateCategoryInput } from '../../validation/category/create_category_validation';
+import { CreateCategoryInput } from '../../validation/category/create_category';
 
 const createCategoryService = async (category: CreateCategoryInput): Promise<ICategory | undefined> => {
   const { name, photo } = category;
