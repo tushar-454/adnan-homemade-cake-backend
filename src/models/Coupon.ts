@@ -14,7 +14,7 @@ interface ICoupon extends Document {
 
 const CouponSchema = new Schema(
   {
-    code: { type: String, required: true },
+    code: { type: String, required: true, unique: true },
     type: { type: String, required: true, enum: ['flat', 'percentage'] },
     discount: { type: Number, required: true },
     quantity: { type: Number, default: null },
