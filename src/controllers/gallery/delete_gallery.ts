@@ -1,18 +1,18 @@
 import { NextFunction, Request, Response } from 'express';
-import { findCouponByProperty } from '../../services/coupon/find_coupon_by_property';
+import { findGalleryByProperty } from '../../services/gallery/find_gallery_by_property';
 
-const deleteCoupon = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+const deleteGallery = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { couponId } = req.params;
-    const coupon = await findCouponByProperty('_id', couponId);
-    if (!coupon) {
+    const { galleryId } = req.params;
+    const gallery = await findGalleryByProperty('_id', galleryId);
+    if (!gallery) {
       res.status(400).json({
         success: false,
         error: 'Resource not found',
       });
       return;
     }
-    const result = await coupon.deleteOne();
+    const result = await gallery.deleteOne();
     if (result.deletedCount === 0) {
       res.status(500).json({
         success: false,
@@ -29,4 +29,4 @@ const deleteCoupon = async (req: Request, res: Response, next: NextFunction): Pr
   }
 };
 
-export { deleteCoupon };
+export { deleteGallery };

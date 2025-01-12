@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { findCouponByProperty } from '../../services/coupon/find_category_by_property';
+import { findCouponByProperty } from '../../services/coupon/find_coupon_by_property';
 import { UpdateCouponInput } from '../../validation/coupon/update_coupon';
 
 const updateCoupon = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
