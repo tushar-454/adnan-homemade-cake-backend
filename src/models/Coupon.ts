@@ -8,8 +8,8 @@ interface ICoupon extends Document {
   quantity: number | null;
   startAt: number | null;
   expireAt: number | null;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const CouponSchema = new Schema(

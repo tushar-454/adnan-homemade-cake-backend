@@ -10,8 +10,8 @@ interface IUser extends Document {
   role: 'user' | 'admin';
   status: 'active' | 'inactive';
   is_deleted: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const userSchema = new Schema(

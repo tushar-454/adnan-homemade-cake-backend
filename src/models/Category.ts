@@ -4,8 +4,8 @@ interface ICategory extends Document {
   _id: string;
   name: string;
   photo: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const CategorySchema = new Schema(
