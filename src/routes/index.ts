@@ -5,6 +5,7 @@ import { categoryRoutes } from './category';
 import { couponRoutes } from './coupon';
 import { galleryRoutes } from './gallery';
 import { productRoutes } from './product';
+import { reviewRoutes } from './review';
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use('/api/v1/carousel', carouselRoutes);
 router.use('/api/v1/coupon', couponRoutes);
 router.use('/api/v1/gallery', galleryRoutes);
 router.use('/api/v1/product', productRoutes);
+router.use('/api/v1/review', reviewRoutes);
 
 export default router;

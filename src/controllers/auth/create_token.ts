@@ -4,6 +4,13 @@ import jwt from 'jsonwebtoken';
 const createToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email } = req.body;
+    if (!email) {
+      res.status(400).json({
+        success: false,
+        error: 'Email is required',
+      });
+      return;
+    }
     const token = jwt.sign({ email }, process.env.JWT_SECRET as string, {
       expiresIn: '1h',
     });
