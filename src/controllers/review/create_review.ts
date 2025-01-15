@@ -7,6 +7,10 @@ const createReview = async (req: RequestWithUser, res: Response, next: NextFunct
   const { _id, name, email, phone, photo } = req.user!;
   try {
     const { comment } = req.body as CreateReviewInput;
+    if (!name || !email || !phone || !photo) {
+      res.status(400).json({ success: false, error: 'update your profile with phone photo' });
+      return;
+    }
     const review = await createReviewService({
       user: { _id, name, email, phone, photo },
       reviewInput: { comment },
