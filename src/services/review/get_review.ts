@@ -1,8 +1,15 @@
 import { IReview, Review } from '../../models/Review';
 
-const getReviewService = async (): Promise<IReview[] | undefined> => {
+type TQuery = {
+  is_deleted?: boolean;
+};
+
+const getReviewService = async (query: TQuery): Promise<IReview[] | undefined> => {
   try {
-    const reviews = await Review.find().select({
+    const { is_deleted } = query;
+    const filterQuery: TQuery = {};
+    filterQuery['is_deleted'] = is_deleted;
+    const reviews = await Review.find(is_deleted === false ? filterQuery : {}).select({
       createdAt: 0,
       updatedAt: 0,
     });
