@@ -1,13 +1,23 @@
 import { IOrder, Order } from '../../models/Order';
 
-type TCreateOrderService = {
-  order: Partial<IOrder>;
-};
-
-const createOrderService = async (order: TCreateOrderService): Promise<IOrder | undefined> => {
-  const {} = order;
+const createOrderService = async (order: Partial<IOrder>): Promise<IOrder | undefined> => {
+  const { name, email, phone, line_items, price, discount, shipping, division, district, sub_district, address, coupon_code, coupon_discount } = order;
   try {
-    const new_order = await Order.create({});
+    const new_order = await Order.create({
+      name,
+      email,
+      phone,
+      line_items,
+      price,
+      discount,
+      shipping,
+      division,
+      district,
+      sub_district,
+      address,
+      coupon_code,
+      coupon_discount,
+    });
     await new_order.save();
     return new_order;
   } catch (error) {

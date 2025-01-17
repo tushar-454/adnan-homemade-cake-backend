@@ -6,4 +6,4 @@ const router = Router();
 
 router.post('/', createOrderValidation, createOrder);
 
-export { router as authRoutes };
+export { router as orderRoutes };

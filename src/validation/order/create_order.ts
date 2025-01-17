@@ -3,12 +3,22 @@ import { z } from 'zod';
 import formatZodErrors from '../../utils/formatZodError';
 
 const createOrderValidationSchema = z.object({
+  name: z.string({
+    message: 'Name is required',
+  }),
+  email: z.string().email({
+    message: 'Invalid email address',
+  }),
+  phone: z.string({
+    message: 'Phone is required',
+  }),
   line_items: z.array(
     z.object({
-      _id: z.string(),
+      product_id: z.string(),
       name: z.string(),
-      image: z.string(),
-      price: z.number(),
+      image: z.string().url({
+        message: 'Invalid image URL',
+      }),
       quantity: z.number(),
       variant: z.string(),
     })

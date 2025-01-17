@@ -4,6 +4,7 @@ import { carouselRoutes } from './carousel';
 import { categoryRoutes } from './category';
 import { couponRoutes } from './coupon';
 import { galleryRoutes } from './gallery';
+import { orderRoutes } from './order';
 import { productRoutes } from './product';
 import { reviewRoutes } from './review';
 
@@ -16,5 +17,6 @@ router.use('/api/v1/coupon', couponRoutes);
 router.use('/api/v1/gallery', galleryRoutes);
 router.use('/api/v1/product', productRoutes);
 router.use('/api/v1/review', reviewRoutes);
+router.use('/api/v1/order', orderRoutes);
 
 export default router;

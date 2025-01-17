@@ -8,12 +8,13 @@ interface IOrder extends Document {
   phone: string;
   photo: string;
   line_items: {
-    _id: string;
+    product_id: string;
     name: string;
     image: string;
     price: number;
     quantity: number;
     variant: string;
+    discount: number;
   }[];
   price: number;
   discount: number;
@@ -34,11 +35,11 @@ interface IOrder extends Document {
 
 const orderSchema: Schema = new Schema<IOrder>(
   {
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User', default: null },
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    photo: { type: String, required: true },
+    photo: { type: String, default: null },
     line_items: {
       type: [
         {
@@ -47,6 +48,7 @@ const orderSchema: Schema = new Schema<IOrder>(
           price: { type: Number, required: true },
           quantity: { type: Number, required: true },
           variant: { type: String, required: true },
+          discount: { type: Number, default: 0 },
         },
       ],
       required: true,
