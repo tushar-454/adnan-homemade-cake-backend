@@ -7,6 +7,7 @@ import { galleryRoutes } from './gallery';
 import { orderRoutes } from './order';
 import { productRoutes } from './product';
 import { reviewRoutes } from './review';
+import { trackingRouter } from './tracking';
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use('/api/v1/gallery', galleryRoutes);
 router.use('/api/v1/product', productRoutes);
 router.use('/api/v1/review', reviewRoutes);
 router.use('/api/v1/order', orderRoutes);
+router.use('/api/v1/tracking', trackingRouter);
 
 export default router;

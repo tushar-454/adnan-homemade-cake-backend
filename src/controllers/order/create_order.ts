@@ -74,6 +74,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction): Pro
       address,
       coupon_code,
       coupon_discount: +coupon_discount.toFixed(2),
+      tracking_id: +Date.now().toString().slice(4),
     });
     if (coupon_code) {
       const coupon = await findCouponByProperty('code', coupon_code);
