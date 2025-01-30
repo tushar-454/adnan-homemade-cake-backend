@@ -22,16 +22,16 @@ const createOrder = async (req: Request, res: Response, next: NextFunction): Pro
       })
     );
     const { price, discount } = populate_line_items.reduce(
-      (acc, item) => {
-        const result = item.price * item.quantity;
-        const discount = result * (item.discount / 100);
-        acc.price = result - discount;
-        acc.discount = acc.discount + discount;
+      (acc, cur) => {
+        const curDiscount = cur.price * cur.quantity * (cur.discount / 100);
+        const curPrice = cur.price * cur.quantity;
+        acc.discount = acc.discount + curDiscount;
+        acc.price = acc.price + curPrice - curDiscount;
         return acc;
       },
       {
-        price: 0,
         discount: 0,
+        price: 0,
       }
     );
     let shipping = 120;
