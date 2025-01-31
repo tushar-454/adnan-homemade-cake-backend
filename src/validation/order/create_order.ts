@@ -36,6 +36,7 @@ const createOrderValidationSchema = z.object({
     message: 'Address is required',
   }),
   coupon_code: z.string().optional(),
+  instruction: z.string().optional(),
 });
 
 const createOrderValidation = async (req: Request, res: Response, next: NextFunction) => {

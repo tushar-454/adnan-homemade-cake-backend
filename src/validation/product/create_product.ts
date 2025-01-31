@@ -9,12 +9,14 @@ const createProductValidationSchema = z.object({
   discount: z.number().int().positive(),
   images: z.array(z.string().url()).nonempty(),
   category: z.string().nonempty(),
-  variants: z.array(
-    z.object({
-      name: z.string().nonempty(),
-      price: z.number().positive(),
-    })
-  ),
+  variants: z
+    .array(
+      z.object({
+        name: z.string().nonempty(),
+        price: z.number().positive(),
+      })
+    )
+    .nonempty(),
 });
 
 const createProductValidation = async (req: Request, res: Response, next: NextFunction) => {
