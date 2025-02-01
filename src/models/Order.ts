@@ -58,7 +58,7 @@ const orderSchema: Schema = new Schema<IOrder>(
     price: { type: Number, required: true },
     discount: { type: Number, required: true },
     shipping: { type: Number, required: true },
-    status: { type: String, enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'], default: 'pending' },
+    status: { type: String, enum: ['pending', 'confirm', 'cooking', 'shipped', 'delivered', 'cancelled'], default: 'pending' },
     is_deleted: { type: Boolean, default: false },
     division: { type: String, required: true },
     district: { type: String, required: true },
