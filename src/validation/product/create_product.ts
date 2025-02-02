@@ -6,7 +6,7 @@ const createProductValidationSchema = z.object({
   name: z.string().nonempty(),
   description: z.string().nonempty(),
   price: z.number().positive(),
-  discount: z.number().int().positive(),
+  discount: z.number().nonnegative(),
   images: z.array(z.string().url()).nonempty(),
   category: z.string().nonempty(),
   variants: z

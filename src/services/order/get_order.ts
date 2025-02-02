@@ -3,7 +3,6 @@ import { IOrder, Order } from '../../models/Order';
 const getOrderService = async (): Promise<IOrder[] | undefined> => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 }).select({
-      createdAt: 0,
       updatedAt: 0,
     });
     return orders || [];
