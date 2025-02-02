@@ -7,8 +7,20 @@ const updateCouponValidationSchema = z.object({
   type: z.enum(['flat', 'percentage'], { message: 'Coupon type is Required [flat / percentage]' }).optional(),
   discount: z.number({ message: 'Coupon discount is Required as number' }).positive({ message: 'Coupon discount must be greater than 0' }).optional(),
   quantity: z.number({ message: 'Coupon quantity is Required as number' }).optional(),
-  startAt: z.number({ message: 'StartAt is Required as millisecond' }).gt(Date.now(), { message: 'Coupon startAt Date must greater then today millisecond' }).optional(),
-  expireAt: z.number({ message: 'ExpireAt is Required as millisecond' }).gt(Date.now(), { message: 'Coupon expireAt Date must greater then today millisecond' }).optional(),
+  startAt: z.string({ message: 'StartAt is Required as ISO String' }).optional(),
+  expireAt: z
+    .string({ message: 'ExpireAt is Required as ISO String' })
+    .refine(
+      (date) => {
+        const expireAtDate = new Date(date).getTime();
+        const currentDate = new Date().getTime();
+        return currentDate < expireAtDate;
+      },
+      {
+        message: 'ExpireAt must be greater than current date',
+      }
+    )
+    .optional(),
 });
 
 const updateCouponValidation = async (req: Request, res: Response, next: NextFunction) => {

@@ -7,8 +7,8 @@ interface ICoupon extends Document {
   discount: number;
   quantity: number | null;
   minprice: number | null;
-  startAt: number | null;
-  expireAt: number | null;
+  startAt: string | null;
+  expireAt: string | null;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -20,8 +20,8 @@ const CouponSchema = new Schema(
     discount: { type: Number, required: true },
     quantity: { type: Number, default: null },
     minprice: { type: Number, default: null },
-    startAt: { type: Number, default: null },
-    expireAt: { type: Number, default: null },
+    startAt: { type: String, default: null },
+    expireAt: { type: String, default: null },
   },
   { timestamps: true, versionKey: false }
 );

@@ -45,7 +45,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction): Pro
         return;
       }
       const { expireAt, quantity, type, discount } = is_coupon_valid;
-      if (expireAt && expireAt < Date.now()) {
+      if (expireAt && new Date().getTime() < Date.now()) {
         res.status(400).json({ success: false, message: 'Coupon code has expired' });
         return;
       }
