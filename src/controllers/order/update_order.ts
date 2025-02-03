@@ -19,7 +19,7 @@ const updateOrder = async (req: Request, res: Response, next: NextFunction): Pro
     await order.save();
 
     res.status(200).json({
-      status: true,
+      success: true,
       message: 'Resource updated',
     });
   } catch (error) {

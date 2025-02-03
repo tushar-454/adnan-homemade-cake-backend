@@ -11,7 +11,7 @@ const router = Router();
 
 router.post('/', createOrderValidation, createOrder);
 router.get('/', verifyToken, verifyAdmin, getOrder);
-router.put('/:orderId', updateOrder);
+router.put('/:orderId', verifyToken, verifyAdmin, updateOrder);
 router.delete('/:orderId', verifyToken, verifyAdmin, deleteOrder);
 
 export { router as orderRoutes };

@@ -12,7 +12,7 @@ import { updateCouponValidation } from '../validation/coupon/update_coupon';
 const router = Router();
 
 router.post('/', verifyToken, verifyAdmin, createCouponValidation, createCoupon);
-router.get('/', getCoupon);
+router.get('/', verifyToken, verifyAdmin, getCoupon);
 router.get('/:code', getCouponByCode);
 router.put('/:couponId', verifyToken, verifyAdmin, updateCouponValidation, updateCoupon);
 router.delete('/:couponId', verifyToken, verifyAdmin, deleteCoupon);

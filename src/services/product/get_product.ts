@@ -16,11 +16,13 @@ const getProductService = async (props: Partial<IProduct>): Promise<IProduct[] |
     if (sell_count) query.sell_count = { $gte: +sell_count };
     if (is_upcoming) query.is_upcoming = is_upcoming;
 
-    const products = await Product.find(query as any).select({
-      variants: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    });
+    const products = await Product.find(query as any)
+      .sort({ createdAt: -1 })
+      .select({
+        variants: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      });
     return products || [];
   } catch (error) {
     console.log('Error in getProductService', error);
