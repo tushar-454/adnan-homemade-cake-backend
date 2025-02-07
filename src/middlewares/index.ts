@@ -5,10 +5,12 @@ import { logger } from '../middlewares/logger';
 import routes from '../routes';
 import { globalError } from './global_error';
 
+const CLIENT_URL = process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL_PROD : process.env.NODE_ENV === 'development' ? process.env.CLIENT_URL_DEV : '';
+
 const applyMiddleware = (app: Application): void => {
   app.use(
     cors({
-      origin: process.env.CLIENT_URL,
+      origin: CLIENT_URL,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     })
