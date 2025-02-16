@@ -9,7 +9,7 @@ const verifyAdmin = async (req: RequestWithUser, res: Response, next: NextFuncti
     if (!user) {
       res.status(403).json({
         success: false,
-        error: 'unauthorized',
+        error: 'forbidden',
       });
       return;
     }
