@@ -16,7 +16,6 @@ const updateReview = async (req: RequestWithUser, res: Response, next: NextFunct
       });
       return;
     }
-    console.log(_id, review.user);
     if (review.user.toString() !== _id.toString()) {
       res.status(403).json({
         success: false,
@@ -28,7 +27,7 @@ const updateReview = async (req: RequestWithUser, res: Response, next: NextFunct
     await review.save();
 
     res.status(200).json({
-      status: true,
+      success: true,
       message: 'Resource updated',
     });
   } catch (error) {
