@@ -45,6 +45,7 @@ const orderSchema: Schema = new Schema<IOrder>(
     line_items: {
       type: [
         {
+          product_id: { type: Schema.Types.ObjectId, ref: 'Product', required: true },
           name: { type: String, required: true },
           image: { type: String, required: true },
           price: { type: Number, required: true },
