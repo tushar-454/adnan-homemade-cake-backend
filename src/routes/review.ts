@@ -9,7 +9,7 @@ import { updateReviewValidation } from '../validation/review/update_review';
 
 const router = Router();
 
-router.post('/', verifyToken, verifyUser, createReviewValidation, createReview);
+router.post('/:orderId', verifyToken, verifyUser, createReviewValidation, createReview);
 router.get('/', getReview);
 router.put('/:reviewId', verifyToken, verifyUser, updateReviewValidation, updateReview);
 

@@ -3,9 +3,14 @@ import { z } from 'zod';
 import formatZodErrors from '../../utils/formatZodError';
 
 const createReviewValidationSchema = z.object({
-  comment: z.string().nonempty({
-    message: 'Comment is required',
-  }),
+  comment: z
+    .string()
+    .nonempty({
+      message: 'Comment is required',
+    })
+    .max(200, {
+      message: 'Comment should not exceed 200 characters',
+    }),
 });
 
 const createReviewValidation = async (req: Request, res: Response, next: NextFunction) => {

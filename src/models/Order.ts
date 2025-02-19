@@ -31,6 +31,7 @@ interface IOrder extends Document {
   coupon_discount: number;
   tracking_id: number;
   instruction: string;
+  isReviewed: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -71,6 +72,7 @@ const orderSchema: Schema = new Schema<IOrder>(
     coupon_discount: { type: Number, default: null },
     tracking_id: { type: Number, unique: true, required: true },
     instruction: { type: String, default: null },
+    isReviewed: { type: Boolean, default: false },
   },
   {
     timestamps: true,
