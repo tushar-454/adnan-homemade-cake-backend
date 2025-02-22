@@ -7,7 +7,6 @@ const updateReview = async (req: RequestWithUser, res: Response, next: NextFunct
   try {
     const { reviewId } = req.params;
     const { is_deleted } = req.body as UpdateReviewInput;
-    const { _id } = req.user!;
     const review = await findReviewByProperty('_id', reviewId);
     if (!review) {
       res.status(400).json({
@@ -16,13 +15,7 @@ const updateReview = async (req: RequestWithUser, res: Response, next: NextFunct
       });
       return;
     }
-    if (review.user.toString() !== _id.toString()) {
-      res.status(403).json({
-        success: false,
-        error: 'forbidden',
-      });
-      return;
-    }
+
     review.is_deleted = is_deleted ?? review.is_deleted;
     await review.save();
 
